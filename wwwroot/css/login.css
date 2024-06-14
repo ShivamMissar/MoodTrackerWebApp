@@ -1,0 +1,43 @@
+﻿.mdlogindiv
+{
+    position:relative;
+    left:600px;
+    top:0px;
+}
+
+.mdformlogin
+{
+    padding:30px;
+    background-color:white;
+    width:170%;
+    border-radius:10px;
+}
+
+.mdformlogin button
+{
+    background-color: orange;
+   
+    font-weight:300;
+    font-size:24px;
+    border:none;
+    border-radius:100px;
+    transition: transform 0.3s ease;
+}
+.mdformlogin button:hover
+{
+    background-color:darkorange;
+    transform: translateY(-5px);
+    
+}
+.word-colour {
+    color: orange;
+}
+.title {
+    color: white;
+    position: relative;
+    top: 200px;
+    font-family: "Oswald", sans-serif;
+    font-size: 99px;
+}
+
+
