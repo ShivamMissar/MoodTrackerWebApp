@@ -1,7 +1,7 @@
 ﻿.mdlogindiv
 {
     position:relative;
-    left:600px;
+    left:500px;
     top:0px;
 }
 
@@ -9,8 +9,15 @@
 {
     padding:30px;
     background-color:white;
-    width:170%;
+    width:200%;
     border-radius:10px;
+}
+.mdformlogin h2
+{
+    text-align:center;
+    font-family: "Oswald", sans-serif;
+    font-weight:200;
+    font-size:44px;
 }
 
 .mdformlogin button
@@ -23,11 +30,57 @@
     border-radius:100px;
     transition: transform 0.3s ease;
 }
-.mdformlogin button:hover
+.links
 {
-    background-color:darkorange;
-    transform: translateY(-5px);
+    margin-top:30px;
+}
+.links p
+{
+    display:inline;
+    padding:20px;
     
+}
+
+.links a
+{
+    text-decoration:none;
+    text-align:center;
+}
+.links a:hover .happyemoji 
+{
+    display:inline;
+}
+.links a:hover .calmemoji 
+{
+    display:inline;
+}
+.links a:hover .sweatyemoji
+{
+    display:inline;
+}
+#forgot-password
+{
+    background-color:orange;
+    padding:10px;
+    color:white;
+    border-radius:20px;
+}
+#register {
+    background-color: cornflowerblue;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
+}
+#resend-confirmation {
+  
+    background-color:green;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
+}
+.mdformlogin button:hover {
+    background-color: darkorange;
+    transform: translateY(-5px);
 }
 .word-colour {
     color: orange;
@@ -38,6 +91,9 @@
     top: 200px;
     font-family: "Oswald", sans-serif;
     font-size: 99px;
+}
+.happyemoji, .calmemoji, .sweatyemoji {
+    display: none;
 }
 
 
