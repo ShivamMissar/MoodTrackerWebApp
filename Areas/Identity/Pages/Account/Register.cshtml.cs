@@ -28,6 +28,7 @@ namespace MoodTracker.Areas.Identity.Pages.Account
         private readonly UserManager<AppUser> _userManager;
         private readonly IUserStore<AppUser> _userStore;
         private readonly IUserEmailStore<AppUser> _emailStore;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
@@ -35,6 +36,7 @@ namespace MoodTracker.Areas.Identity.Pages.Account
             UserManager<AppUser> userManager,
             IUserStore<AppUser> userStore,
             SignInManager<AppUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -75,6 +77,13 @@ namespace MoodTracker.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            /// 
+            [Required]
+            
+            public string Firstname { get; set; }
+
+            [Required]
+            public string Lastname { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -111,13 +120,33 @@ namespace MoodTracker.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
+                var role = new IdentityRole();
+                if (!await _roleManager.RoleExistsAsync("Admin"))
+                {
+                    role.Name = "Admin";
+                    await _roleManager.CreateAsync(role);
+                }
+
+                else if (!await _roleManager.RoleExistsAsync("Visitor"))
+                {
+                    role.Name = "Visitor";
+                    await _roleManager.CreateAsync(role);
+                }
+                else
+                {
+                    role.Name = "Visitor";
+                }
                 var user = CreateUser();
 
+                user.Firstname = Input.Firstname;
+                user.Lastname = Input.Lastname;
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddToRoleAsync(user, role.Name);
 
                 if (result.Succeeded)
                 {

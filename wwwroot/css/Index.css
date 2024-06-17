@@ -1,0 +1,38 @@
+﻿.logemotionbutton
+{
+    text-decoration:none;
+    background-color:orange;
+    padding:10px;
+    font-size:20px;
+    color:white;
+    border-radius:30px;
+  
+}
+
+.logemotionbutton:hover
+{
+     
+}
+.moodform
+{
+    background-color:white;
+
+}
+
+.moodentryform
+{
+    padding:30px;
+}
+.moodentryform input,label,button {
+    display: block;
+    padding:5px;
+    width:300px;
+}
+.moodentryform button
+{
+    margin-top:30px;
+    border:none;
+    background-color:orange;
+    color:white;
+    border-radius:10px;
+}
