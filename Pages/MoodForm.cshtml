@@ -7,18 +7,25 @@
 <div class="moodform">
 
     <h2>Enter the details about your mood below</h2>
-    <form method="post" class="moodentryform">
+    <form method="post" class="moodentryform" asp-page="/MoodForm">
         <input type="text" value="@Model.userId" readonly/>
 
 
-        <label asp-for="@Model.mood.MoodName">Enter the mood you felt</label>
-        <input type="text" placeholder="Enter your feeling in one word" required/>
+        <label asp-for="@Model.moodEntry.MoodName">Enter the mood you felt</label>
+        <input asp-for="@Model.moodEntry.MoodName" placeholder="Enter your feeling in one word" required />
 
-        <label asp-for="@Model.mood.MoodDescription"></label>
-        <input type="text" placeholder="Describe what led to this mood?" required />
+        <label asp-for="@Model.moodEntry.MoodDescription"></label>
+        <input asp-for="@Model.moodEntry.MoodDescription" placeholder="Describe what led to this mood?" required />
 
-        <label asp-for="@Model.mood.MoodColour">What colour best decipts your mood</label>
-        <input type="text" placeholder="Enter the colour that best describes your mood" />
+        <label asp-for="@Model.moodEntry.MoodColour">What colour best decipts your mood</label>
+        <input asp-for="@Model.moodEntry.MoodColour" placeholder="Enter the colour that best describes your mood" />
+
+        <label asp-for="@Model.moodEntry.Notes">What colour best decipts your mood</label>
+        <input asp-for="@Model.moodEntry.Notes" placeholder="Enter any additional information" />
+
+     
+
+
 
         <button type="submit">Submit Mood Entry</button>
 

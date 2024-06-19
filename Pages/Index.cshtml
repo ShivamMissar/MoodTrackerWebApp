@@ -7,11 +7,62 @@
 <div class="text-center">
   
     <a class="logemotionbutton" target="_blank" asp-page="/MoodForm">New Emotion? Click here to log</a>
-
-
-    <div class="chart">
-        <h2>Your emotion log</h2>
-
+       <div class="timeline">
+        <h2>Your Mood Entries (Monday to Friday)</h2>
+        @foreach (var entry in Model.MoodEntries)
+        {
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>@entry.EntryDate.ToString("dddd, MMMM dd yyyy")</h3>
+                    <p><strong>Mood:</strong> @entry.MoodName</p>
+                    <p><strong>Description:</strong> @entry.MoodDescription</p>
+                    <p><strong>Notes:</strong> @entry.Notes</p>
+                </div>
+            </div>
+        }
     </div>
-
 </div>
+
+<style>
+    .timeline {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 10px 0;
+        background: #f9f9f9;
+    }
+
+    .timeline-item {
+        padding: 20px;
+        position: relative;
+        background-color: inherit;
+        border-left: 2px solid #007bff;
+        margin-bottom: 10px;
+    }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            right: -6px;
+            background-color: white;
+            border: 2px solid #007bff;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+
+    .timeline-content {
+        padding: 10px 20px;
+        background-color: #ffffff;
+        position: relative;
+        border-radius: 6px;
+    }
+
+        .timeline-content h3 {
+            margin-top: 0;
+        }
+</style>
+
+

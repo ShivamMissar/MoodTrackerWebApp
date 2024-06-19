@@ -9,7 +9,7 @@ namespace MoodTracker.Models
         { }
 
 
-        public DbSet<Mood> mood { get; set; }
+       
         public DbSet<MoodEntry>moodEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -25,17 +25,7 @@ namespace MoodTracker.Models
                 .OnDelete(DeleteBehavior.Cascade);
 
             // For each mood entry it is associated to a single mood
-            builder.Entity<MoodEntry>().
-                HasOne(e => e.Mood)
-                .WithMany()
-                .HasForeignKey(e => e.MoodId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-
-
-
-
-
+           
         }
     }
 }
