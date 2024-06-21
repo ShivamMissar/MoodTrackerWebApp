@@ -42,6 +42,7 @@ namespace MoodTracker.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
             _userStore = userStore;
+            _roleManager = roleManager;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
@@ -130,7 +131,7 @@ namespace MoodTracker.Areas.Identity.Pages.Account
                     await _roleManager.CreateAsync(role);
                 }
 
-                else if (!await _roleManager.RoleExistsAsync("Visitor"))
+                else if (!await _roleManager.RoleExistsAsync("User"))
                 {
                     role.Name = "Visitor";
                     await _roleManager.CreateAsync(role);

@@ -1,0 +1,41 @@
+﻿@page
+@model MoodTracker.Pages.AdminDashboardModel
+@{
+
+}
+
+
+
+<div class="AvaliableRoles">
+
+    <div class="AddNewRole">
+        <form method="post" asp-page-handler="CreateNewRole">
+            <input asp-for="@Model.new_role_name" placeholder="Enter a new role here"/>
+            <button type="submit">Add New Role</button>
+        </form>
+
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Role Name</th>
+                <th>Manage Role</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach(var role in Model.Roles)
+                {
+                    <tr>
+                        <td>@role.Name</td>
+                        <td><a class="Delete-Option"></a></td>
+                    </tr>
+                }
+            }
+            
+        </tbody>
+    </table>
+
+</div>
