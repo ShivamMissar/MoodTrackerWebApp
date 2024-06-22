@@ -1,2 +1,107 @@
-﻿body {
+﻿.AvaliableRoles
+{
+    padding:10px;
+    background-color:cornflowerblue;
+    margin-bottom:50px;
+    width:100%;
+    border-radius:10px;
 }
+
+.AvaliableRoles h2
+{
+    text-align:center;
+    padding:5px;
+}
+
+.AddNewRole
+{
+    margin-bottom:-30px;
+}
+
+
+
+.AddNewRole input
+{
+    width:100%;
+    padding:10px;
+}
+.AddNewRole button
+{
+    padding:10px;
+    position:relative;
+    top:-46px;
+    width:11%;
+    background-color:darkorange;
+    color:white;
+    left:88.5%;
+    border:none;
+    display:inline;
+    
+}
+
+.AvaliableRoles a {
+    text-decoration: none;
+    color:white;
+    background-color:red;
+    padding:10px;
+}
+
+
+.AvaliableRoles th
+{
+    background-color:white;
+    padding:10px;
+}
+.AvaliableRoles td
+{
+    padding:10px;
+}
+.AllUsers h2
+{
+    text-align:center;
+    padding:5px;
+}
+.AllUsers {
+    padding: 10px;
+    background-color: cornflowerblue;
+    width: 100%;
+}
+
+.AllUsers 
+{
+    border-radius:10px;
+}
+
+.AllUsers button
+{
+    width:100px;
+    border:none;
+    background-color:darkorange;
+    color:white;
+
+}
+
+.AllUsers th
+{
+    background:white;
+    text-align:center;
+}
+.AllUsers th,td
+{
+    padding:15px;
+}
+
+.AllUsers input
+{
+    width:250px;
+    border:none;
+    padding:8px;
+    border-radius:4px;
+}
+.AllUsers .delete_user
+{
+    width:180px;
+    padding:10px;
+    background-color:red;
+}
+

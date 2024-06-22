@@ -7,7 +7,7 @@
 
 
 <div class="AvaliableRoles">
-
+    <h2>Role Management</h2>
     <div class="AddNewRole">
         <form method="post" asp-page-handler="CreateNewRole">
             <input asp-for="@Model.new_role_name" placeholder="Enter a new role here"/>
@@ -16,26 +16,88 @@
 
 
     </div>
-    <table>
-        <thead>
+ 
+   
+    <table class="table">
+        <thead class="thead-light">
             <tr>
-                <th>Role Name</th>
-                <th>Manage Role</th>
+                <th scope="col">RoleId</th>
+                <th scope="col">Role Name</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
+        <tbody>
+           @foreach(var role in Model.Roles)
+           {
+               <tr>
+                    <td>@role.Id</td>
+                    <td>@role.Name</td>
+                    <td><a class="Delete-Option" asp-page-handler="DeleteRole" asp-route-id="@role.Id">Delete User</a></td>
+               </tr>
+               
+                
+           }
 
+        </tbody>
+    </table>
+</div>
+
+
+<div class="AllUsers">
+    <h2>User Management</h2>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Update Email</th>
+                <th>Update Password</th>
+                <th>Update Role</th>
+                <th>Delete User</th>
+            </tr>
+        </thead>
         <tbody>
             @{
-                foreach(var role in Model.Roles)
+                foreach(var user in Model.users)
                 {
                     <tr>
-                        <td>@role.Name</td>
-                        <td><a class="Delete-Option"></a></td>
+                        <td> <h4>@user.Firstname  @user.Lastname</h4></td>
+                        <td>
+                            <form method="post" asp-page-handler="UpdateEmail">
+                                @{
+                                    if(user.Email == "Admin@gmail.com")
+                                    {
+                                        <input type="@Model.new_email" value="@user.Email" readonly/>
+                                    }
+                                    else
+                                    {
+                                        <input type="@Model.new_email" value="@user.Email" />
+                                    }
+                                    
+                                }
+                                <button class="" type="submit" asp-route-id="@user.Id">Submit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="UpdatePassword">
+                                <input type="@Model.new_password" placeholder="Enter their new password"/>
+                                <button class="" type="submit" asp-route-id="@user.Id">Submit</button>
+                             </form>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="UpdateRole">
+                                <input type="@Model.new_user_role" placeholder="Enter their new role" />
+                                <button class="" type="submit" asp-route-id="@user.Id">Submit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="DeleteUser">
+                                <button class="delete_user" type="submit" asp-route-id="@user.Id">Submit</button>
+                            </form>
+                        </td>
                     </tr>
                 }
             }
-            
         </tbody>
     </table>
-
 </div>
+
