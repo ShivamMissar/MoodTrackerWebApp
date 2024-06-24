@@ -45,6 +45,33 @@
 
 <div class="AllUsers">
     <h2>User Management</h2>
+
+    @if (TempData["EmailUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["EmailUpdateMessage"]
+        </div>
+    }
+    @if (TempData["PasswordUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["PasswordUpdateMessage"]
+        </div>
+    }
+
+    @if (TempData["RoleUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["RoleUpdateMessage"]
+        </div>
+    }
+
+    @if (TempData["RoleNotExist"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["RoleNotExist"]
+        </div>
+    }
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -59,42 +86,35 @@
             @{
                 foreach(var user in Model.users)
                 {
-                    <tr>
-                        <td> <h4>@user.Firstname  @user.Lastname</h4></td>
-                        <td>
-                            <form method="post" asp-page-handler="UpdateEmail">
-                                @{
-                                    if(user.Email == "Admin@gmail.com")
-                                    {
-                                        <input type="@Model.new_email" value="@user.Email" readonly/>
-                                    }
-                                    else
-                                    {
-                                        <input type="@Model.new_email" value="@user.Email" />
-                                    }
-                                    
-                                }
-                                <button class="" type="submit" asp-route-id="@user.Id">Submit</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form method="post" asp-page-handler="UpdatePassword">
-                                <input type="@Model.new_password" placeholder="Enter their new password"/>
-                                <button class="" type="submit" asp-route-id="@user.Id">Submit</button>
-                             </form>
-                        </td>
-                        <td>
-                            <form method="post" asp-page-handler="UpdateRole">
-                                <input type="@Model.new_user_role" placeholder="Enter their new role" />
-                                <button class="" type="submit" asp-route-id="@user.Id">Submit</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form method="post" asp-page-handler="DeleteUser">
-                                <button class="delete_user" type="submit" asp-route-id="@user.Id">Submit</button>
-                            </form>
-                        </td>
-                    </tr>
+                            <tr>
+                                <td> <h4>@user.Firstname  @user.Lastname</h4></td>
+                                <td>
+                                    <form method="post" asp-page="/AdminDashboard" asp-page-handler="UpdateEmail" asp-route-id="@user.Id">
+                                        <input asp-for="@Model.NewEmail" placeholder="Enter new email" value="@user.Email" />
+                                        <button class="" type="submit">Submit</button>
+                                   
+
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-page-handler="UpdatePassword" asp-page="/AdminDashboard" asp-route-id="@user.Id">
+                                        <input asp-for="@Model.NewPassword" placeholder="Enter their new password"/>
+                                        <button class="" type="submit">Submit</button>
+                                     </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-page-handler="UpdateRole"  asp-route-id="@user.Id" asp-page="/Admindashboard">
+                                        <input asp-for="@Model.NewUserRole" placeholder="Enter their new role" />
+                                        <button class="" type="submit">Submit</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-page-handler="DeleteUser">
+                                        <button class="delete_user" type="submit" asp-route-id="@user.Id">Submit</button>
+
+                                    </form>
+                                </td>
+                            </tr>
                 }
             }
         </tbody>

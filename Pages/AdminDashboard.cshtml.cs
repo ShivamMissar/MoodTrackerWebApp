@@ -1,17 +1,21 @@
+using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoodTracker.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoodTracker.Pages
 {
     
     public class AdminDashboardModel : PageModel
     {
-        private const String PAGENAME = "/AdminDashboard";
+        
         private readonly UserManager<AppUser> _userManger;
         private readonly RoleManager<IdentityRole> _roleManager;
+       
+    
         public IEnumerable<IdentityRole> Roles { get; set; } = new List<IdentityRole>();
         public IEnumerable<AppUser> users { get; set; } = new List<AppUser>();
 
@@ -19,6 +23,8 @@ namespace MoodTracker.Pages
         {
             _userManger = userManager;
             _roleManager = roleManager;
+            
+           
         }
 
 
@@ -27,13 +33,14 @@ namespace MoodTracker.Pages
 
 
         [BindProperty]
-        public string new_password { get; set; }
+        public string NewPassword { get; set; }
 
         [BindProperty]
-        public string new_email { get; set; }
+        [EmailAddress]
+        public string NewEmail { get; set; }
 
         [BindProperty]
-        public string new_user_role { get; set; }
+        public string NewUserRole { get; set; }
         public async Task OnGetAsync()
         {
             Roles = await _roleManager.Roles.ToListAsync();
@@ -42,15 +49,73 @@ namespace MoodTracker.Pages
 
         public async Task<IActionResult> OnPostCreateNewRoleAsync()
         {
-            await _roleManager.CreateAsync(new IdentityRole(new_role_name.Trim()));
-            return RedirectToPage(PAGENAME);
+            await _roleManager.CreateAsync(new IdentityRole(NewUserRole.Trim()));
+            return RedirectToPage("/AdminDashboard");
         }
 
         public async Task<IActionResult> OnGetDeleteRoleAsync(string Id)
         {
             var role = await _roleManager.FindByIdAsync(Id);
             await _roleManager.DeleteAsync(role);
-            return RedirectToPage(PAGENAME);  
+            return RedirectToPage("/AdminDashboard");  
+        }
+
+        public async Task<IActionResult> OnPostUpdateEmailAsync(string Id)
+        {
+            var user = await _userManger.FindByIdAsync(Id);
+            if(user != null)
+            {
+                user.Email = NewEmail;
+            }
+            
+            var result = await _userManger.UpdateAsync(user);
+            if(result.Succeeded) 
+            {
+                TempData["EmailUpdateMessage"] = "Email has been updated successfully.";
+            }
+
+            return RedirectToPage("/AdminDashboard");
+
+        }
+
+        public async Task<IActionResult> OnPostUpdatePasswordAsync(String Id)
+        {
+            var user = await _userManger.FindByIdAsync(Id);
+            //This will remove the current existing password
+            if(user != null) 
+            {
+                await _userManger.RemovePasswordAsync(user);
+            }
+            var result = await _userManger.AddPasswordAsync(user, NewPassword);
+            if(result.Succeeded) 
+            {
+                TempData["PasswordUpdateMessage"] = "Password has been updated successfully.";
+
+            }
+            return RedirectToPage("/AdminDashboard");
+        }
+
+
+        public async Task<IActionResult> OnPostUpdateRoleAsync(string Id)
+        {
+            var finduser = await _userManger.FindByIdAsync(Id);
+            if(finduser != null) 
+            {
+                if(!await _roleManager.RoleExistsAsync(NewUserRole))
+                {
+                    TempData["RoleNotExist"] = "The role you are trying enter does not exist";
+                }
+                else
+                {
+                    var result = await _userManger.AddToRoleAsync(finduser, NewUserRole);
+                    if(result.Succeeded)
+                    {
+                        TempData["RoleUpdateMessage"] = "User role updated successfully.";
+                    }
+                }
+
+            }
+            return RedirectToPage("/Admindashboard");
         }
 
 
