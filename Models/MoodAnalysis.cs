@@ -2,7 +2,7 @@
 
 namespace MoodTracker.Models
 {
-    public class MoodUnderstanding
+    public class MoodAnalysis
     {
         [Key]
         public int Id { get; set; }
@@ -10,5 +10,7 @@ namespace MoodTracker.Models
         public string? mood_insight { get; set; }
 
         public string? recommendation { get; set; }
+
+        public string UserId { get; set; }
     }
 }

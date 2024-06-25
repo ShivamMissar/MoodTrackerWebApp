@@ -12,8 +12,8 @@ using MoodTracker.Models;
 namespace MoodTracker.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    [Migration("20240625085559_CreatedMoodUnderstandingTable")]
-    partial class CreatedMoodUnderstandingTable
+    [Migration("20240625103546_createdMoodUnderstandingTable")]
+    partial class createdMoodUnderstandingTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -276,6 +276,10 @@ namespace MoodTracker.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mood_insight")
                         .HasColumnType("nvarchar(max)");
