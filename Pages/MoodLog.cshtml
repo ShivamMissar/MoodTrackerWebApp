@@ -1,0 +1,26 @@
+﻿@page
+@model MoodTracker.Pages.MoodLogModel
+@{
+}
+
+
+<div class="LogOfMoods">
+    <h3>A history of your logs</h3>
+    @foreach(var entry in Model.moodEntries)
+    {
+        <h3>@entry.EntryDate.ToString("dddd, MMMM dd yyyy")</h3>
+        <p><strong>Mood:</strong> @entry.MoodName</p>
+        <p><strong>Description:</strong> @entry.MoodDescription</p>
+        <p><strong>Notes:</strong> @entry.Notes</p>
+        @foreach(var analysis in Model.MoodAnalysis)
+        {
+            <p>@analysis.mood_insight</p>
+            <p>@analysis.</p>
+        }
+
+    }
+
+
+
+
+</div>
