@@ -1,10 +1,79 @@
-﻿.LogOfMoods
-{
-    background-color:white;
-    height:100px;
-    color:black;
+﻿.LogOfMoods {
+    
+    height: 100px;
+    color: black;
+    padding:10px;
+    margin-bottom:100%;
 }
 
-p{
-    color:red;
+.LogOfMoods h1
+{
+    text-align:center;
+    margin:1px;
+    padding:40px;
+}
+.SearchLogs
+{
+    padding:20px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.SearchLogs input[type=submit]
+{
+    border:none;
+    width:200px;
+    background-color:orange;
+    color:white;
+    position:relative;
+    left:89px;
+    padding:5px;
+    font-size:16px;
+    border-radius:10px;
+}
+.SearchLogs input[type=submit]:hover
+{
+    background-color:darkorange;
+}
+.SearchLogs #dateonlyinput
+{
+    width:400px;
+    text-align:center;
+    top:-50px;
+    border:none;
+    padding:10px;
+    position:relative;
+    left:400px;
+}
+.logs {
+    background-color: white;
+    border-radius: 20px;
+    
+    margin-bottom:10px;
+}
+.logs h3
+{
+    padding:10px;
+    color:orange;
+    text-align:center;
+}
+.logs h4
+{
+    font-size:20px;
+    padding:5px;
+    color:orange;
+    font-weight:400;
+    text-align:center;
+}
+.logs p
+{
+    font-family: sans-serif;
+    padding:5px;
+    color:cornflowerblue
+
+}
+.mini-title
+{
+    color:midnightblue;
+    font-size:16px;
 }

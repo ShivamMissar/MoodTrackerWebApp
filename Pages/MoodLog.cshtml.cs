@@ -17,19 +17,34 @@ namespace MoodTracker.Pages
             _dbcontext = dbcontext;
         }
 
-        public List<MoodEntry> moodEntries { get; set; } = new List<MoodEntry>();
-        public List<MoodAnalysis> MoodAnalysis { get; set; } = new List<MoodAnalysis>();
+        public List<MoodEntry> MoodEntries { get; set; } = new List<MoodEntry>();
+       
 
         public string userId { get; set; }
+
+        [BindProperty]
+        public DateOnly search { get; set; }
+
+
 
         public async Task OnGetAsync()
         {
             userId = _userManager.GetUserId(User);
-            moodEntries = await _dbcontext.moodEntries.Where(entry => entry.UserId == userId).ToListAsync();
-            MoodAnalysis = await _dbcontext.moodAnalysis.Where(entry => entry.UserId == userId).ToListAsync();
+            MoodEntries = await _dbcontext.moodEntries.Where(entry => entry.UserId == userId).ToListAsync();
+           
 
 
 
+
+
+        }
+
+        public async Task<IActionResult> OnPostSearchAsync()
+        {
+            DateOnly searchDate = search; 
+            userId = _userManager.GetUserId(User);
+            MoodEntries = await _dbcontext.moodEntries.Where(entry => entry.User.Id == userId && DateOnly.FromDateTime(entry.EntryDate) == searchDate).ToListAsync(); 
+            return Page();
         }
     }
 }

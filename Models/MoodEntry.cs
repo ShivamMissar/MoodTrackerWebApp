@@ -18,6 +18,10 @@ namespace MoodTracker.Models
 
         public string Notes{ get; set; }
 
+        public string? mood_insight { get; set; }
+
+        public string? recommendation { get; set; }
+
 
         public AppUser User { get; set; }
     

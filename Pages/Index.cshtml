@@ -17,10 +17,10 @@
                     <p><strong>Mood:</strong> @entry.MoodName</p>
                     <p><strong>Description:</strong> @entry.MoodDescription</p>
                     <p><strong>Notes:</strong> @entry.Notes</p>
-                    @if(Model.MoodAnalysis.ContainsKey(entry.MoodEntryId))
+                    @if(entry.mood_insight != null && entry.recommendation != null)
                     {
-                        <p><strong>Insight:</strong>@Model.MoodAnalysis[entry.MoodEntryId].mood_insight</p>
-                        <p><strong>Recommendations: </strong> @Model.MoodAnalysis[entry.MoodEntryId].recommendation</p>
+                        <p><strong>Insight:</strong>@entry.mood_insight</p>
+                        <p><strong>Recommendations: </strong> @entry.recommendation</p>
                     }
                 </div>
             </div>

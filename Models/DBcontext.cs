@@ -11,7 +11,7 @@ namespace MoodTracker.Models
 
        
         public DbSet<MoodEntry>moodEntries { get; set; }
-        public DbSet<MoodAnalysis> moodAnalysis { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

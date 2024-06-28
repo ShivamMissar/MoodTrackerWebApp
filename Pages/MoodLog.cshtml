@@ -5,18 +5,32 @@
 
 
 <div class="LogOfMoods">
-    <h3>A history of your logs</h3>
-    @foreach(var entry in Model.moodEntries)
+    <h1>A history of your logs</h1>
+
+    <div class="SearchLogs">
+        <form class="search_bar" method="post" asp-page-handler="Search">
+            <input asp-for="@Model.search" placeholder="Enter the date of the mood log dd/mm/yyyy" id="dateonlyinput"/>
+            <input type="submit" value="search"/>
+        </form>
+
+    </div>
+    
+    @foreach(var entry in Model.MoodEntries)
     {
-        <h3>@entry.EntryDate.ToString("dddd, MMMM dd yyyy")</h3>
-        <p><strong>Mood:</strong> @entry.MoodName</p>
-        <p><strong>Description:</strong> @entry.MoodDescription</p>
-        <p><strong>Notes:</strong> @entry.Notes</p>
-        @foreach(var analysis in Model.MoodAnalysis)
-        {
-            <p>@analysis.mood_insight</p>
-            <p>@analysis.</p>
-        }
+        <div class="logs">
+            <h3>@entry.EntryDate.ToString("dddd, MMMM dd yyyy")</h3>
+            <h4><strong>Mood Logged:</strong> @entry.MoodName</h4>
+            <p><strong class="mini-title">Description:</strong> @entry.MoodDescription</p>
+            <p><strong class="mini-title">Insight:</strong>@entry.mood_insight</p>
+            <p><strong class="mini-title">Recommendation:</strong>@entry.recommendation</p>
+            <p><strong class="mini-title">Notes:</strong> @entry.Notes</p>
+
+          
+
+        </div>
+
+       
+      
 
     }
 

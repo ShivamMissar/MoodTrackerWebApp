@@ -22,7 +22,7 @@ namespace MoodTracker.Pages
         }
 
         public List<MoodEntry> MoodEntries { get; set; } = [];
-        public Dictionary<int, MoodAnalysis> MoodAnalysis { get; set; } = [];
+        
 
      
 
@@ -41,20 +41,11 @@ namespace MoodTracker.Pages
 
             foreach(var entry in MoodEntries) 
             {
-                var insights = GetInsight(entry,MoodEntries);
-                var recommendations = GetRecommendations(entry,MoodEntries);
+                  entry.mood_insight = GetInsight(entry,MoodEntries);
+                  entry.recommendation = GetRecommendations(entry,MoodEntries);
 
 
-                MoodAnalysis[entry.MoodEntryId] = new MoodAnalysis
-                {
-                    mood_insight = insights,
-                    recommendation = recommendations,
-                    UserId = entry.UserId
-               
-
-                };
-
-                _dbcontext.moodAnalysis.Add(MoodAnalysis[entry.MoodEntryId]);
+                _dbcontext.Update(entry);
 
             }
             await _dbcontext.SaveChangesAsync();
