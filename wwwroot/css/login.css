@@ -8,7 +8,7 @@
 .mdformlogin
 {
     padding:30px;
-    background-color:white;
+    background-color:#027dc5;
     width:200%;
     border-radius:10px;
 }
@@ -22,7 +22,7 @@
 
 .mdformlogin button
 {
-    background-color: orange;
+    background-color: #d9dad9;
    
     font-weight:300;
     font-size:24px;
@@ -58,35 +58,33 @@
 {
     display:inline;
 }
-#forgot-password
-{
-    background-color:orange;
-    padding:10px;
-    color:white;
-    border-radius:20px;
+#forgot-password {
+    background-color: #a0c3e2;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
 }
 #register {
-    background-color: cornflowerblue;
+    background-color: #a0c3e2;
     padding: 10px;
     color: white;
     border-radius: 20px;
 }
 #resend-confirmation {
-  
-    background-color:green;
+    background-color: #a0c3e2;
     padding: 10px;
     color: white;
     border-radius: 20px;
 }
 .mdformlogin button:hover {
-    background-color: darkorange;
+    background-color: #d7e0eb;
     transform: translateY(-5px);
 }
 .word-colour {
-    color: orange;
+    color: #027dc5;
 }
 .title {
-    color: white;
+    color: #a0c3e2;
     position: relative;
     top: 200px;
     font-family: "Oswald", sans-serif;

@@ -1,10 +1,9 @@
-﻿.AvaliableRoles
-{
-    padding:10px;
-    background-color:cornflowerblue;
-    margin-bottom:50px;
-    width:100%;
-    border-radius:10px;
+﻿.AvaliableRoles {
+    padding: 10px;
+    background-color: #027dc5;
+    margin-bottom: 50px;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .AvaliableRoles h2
@@ -31,7 +30,7 @@
     position:relative;
     top:-46px;
     width:11%;
-    background-color:darkorange;
+    background-color:#a0c3e2;
     color:white;
     left:88.5%;
     border:none;
@@ -63,7 +62,7 @@
 }
 .AllUsers {
     padding: 10px;
-    background-color: cornflowerblue;
+    background-color: #027dc5;
     width: 100%;
 }
 
@@ -76,9 +75,14 @@
 {
     width:100px;
     border:none;
-    background-color:darkorange;
+    background-color:#d7e0eb;
     color:white;
 
+}
+.AllUsers button:hover
+{
+    background-color:#a0c3e2;
+     color:white;
 }
 
 .AllUsers th

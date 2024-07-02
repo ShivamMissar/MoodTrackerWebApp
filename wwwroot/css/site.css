@@ -18,10 +18,7 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
-    background-image: url('../images/background3.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color:white;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -29,16 +26,15 @@ h1,h2,h3,h4,h5,h6 {
     color:white;
 }
 
-.mynav
-{
-    background-color:lightblue;
-    margin-bottom:40px;
-   
+.mynav {
+    background-color: #027dc5;
+    color:white;
+    margin-bottom: 40px;
 }
 
 .mynav .logo 
 {
-    color:darkblue;
-    border-right:2px solid orange;
+    color:white;
+    border-right:2px solid white;
     padding:10px;
 }

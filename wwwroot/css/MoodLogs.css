@@ -1,8 +1,9 @@
 ﻿.LogOfMoods {
     
-    height: 100px;
-    color: black;
-    padding:10px;
+    height: auto;
+    background-color:#027dc5;
+    padding:20px;
+    border-radius:10px;
     margin-bottom:100%;
 }
 
@@ -23,7 +24,7 @@
 {
     border:none;
     width:200px;
-    background-color:orange;
+    background-color:#d9dad9;
     color:white;
     position:relative;
     left:89px;
@@ -33,7 +34,7 @@
 }
 .SearchLogs input[type=submit]:hover
 {
-    background-color:darkorange;
+    background-color:darkblue;
 }
 .SearchLogs #dateonlyinput
 {
@@ -46,22 +47,21 @@
     left:400px;
 }
 .logs {
-    background-color: white;
+    background-color: #d7e0eb;
     border-radius: 20px;
-    
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 .logs h3
 {
     padding:10px;
-    color:orange;
+    color:white;
     text-align:center;
 }
 .logs h4
 {
     font-size:20px;
     padding:5px;
-    color:orange;
+    color:white;
     font-weight:400;
     text-align:center;
 }
@@ -69,7 +69,7 @@
 {
     font-family: sans-serif;
     padding:5px;
-    color:cornflowerblue
+    color:cornflowerblue;
 
 }
 .mini-title
