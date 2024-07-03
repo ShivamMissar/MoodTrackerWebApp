@@ -1,0 +1,68 @@
+﻿@page
+@model MoodTracker.Pages.AccountModel
+@{
+    ViewData["Title"] = "Your Account";
+}
+
+<div class="UpdateDetails">
+    <h1>Manage your account</h1>
+
+    @if (TempData["NameUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["NameUpdateMessage"]
+        </div>
+    }
+
+    @if (TempData["EmailUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["EmailUpdateMessage"]
+        </div>
+    }
+    @if (TempData["PasswordUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["PasswordUpdateMessage"]
+        </div>
+    }
+
+    <form method="post" asp-page-handler="UpdateName" asp-route-id="@Model.UserId" class="UpdateNameForm">
+        <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+        <h3>Update your name here</h3>
+
+        <div class="form-floating mb-3">
+            <input asp-for="@Model.Update_FName" value="@Model.Update_FName" class="form-control" />
+            <label asp-for="@Model.Update_FName">Update Firstname</label>
+            <span asp-validation-for="@Model.Update_FName" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input asp-for="Update_LName" value="@Model.Update_LName" class="form-control" />
+            <label asp-for="Update_LName">Update Lastname</label>
+            <span asp-validation-for="Update_LName" class="text-danger"></span>
+        </div>
+        <button type="submit">Update your Name</button>
+    </form>
+
+    <form method="post" asp-page-handler="UpdateEmail" asp-route-id="@Model.UserId" class="UpdateEmailForm">
+        <h3>Update your email here</h3>
+        <div class="form-floating mb-3">
+            <input asp-for="Update_Email" class="form-control" />
+            <label asp-for="Update_Email">Update Email</label>
+            <span asp-validation-for="Update_Email" class="text-danger"></span>
+        </div>
+
+        <button type="submit">Update your email</button>
+    </form>
+
+    <form method="post" asp-page-handler="UpdatePassword" asp-route-id="@Model.UserId" class="UpdatePasswordForm">
+        <h3>Update your password here</h3>
+        <div class="form-floating mb-3">
+            <input asp-for="Update_Password" class="form-control" />
+            <label asp-for="Update_Password">Update Password</label>
+            <span asp-validation-for="Update_Password" class="text-danger"></span>
+        </div>
+        <button type="submit">Update your Password</button>
+    </form>
+</div>

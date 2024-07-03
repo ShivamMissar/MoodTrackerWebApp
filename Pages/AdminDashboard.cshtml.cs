@@ -90,9 +90,8 @@ namespace MoodTracker.Pages
             if(result.Succeeded) 
             {
                 TempData["PasswordUpdateMessage"] = "Password has been updated successfully.";
-
             }
-            return RedirectToPage("/AdminDashboard");
+            return RedirectToPage("/Account");
         }
 
 
