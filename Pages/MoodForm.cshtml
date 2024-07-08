@@ -1,6 +1,7 @@
 ﻿@page
 @model MoodTracker.Pages.MoodFormModel
 @{
+
 }
 
 
@@ -8,23 +9,32 @@
 
     <h2>Enter the details about your mood below</h2>
     <form method="post" class="moodentryform" asp-page="/MoodForm">
-        <input type="text" value="@Model.userId" readonly/>
+        <input type="hidden" value="@Model.userId" readonly/>
+
+        <div class="form-floating mb-3">
+            <input asp-for="@Model.moodEntry.MoodName" placeholder="Enter your feeling in one word" required class="form-control" />
+            <label asp-for="@Model.moodEntry.MoodName">Mood Name</label>
+            <span asp-validation-for="@Model.moodEntry.MoodName" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input asp-for="@Model.moodEntry.MoodDescription" placeholder="Describe what led to this mood?" required class="form-control" />
+            <label asp-for="@Model.moodEntry.MoodDescription">Short Description</label>
+            <span asp-validation-for="@Model.moodEntry.MoodDescription" class="text-danger"></span>
+        </div>
 
 
-        <label asp-for="@Model.moodEntry.MoodName">Enter the mood you felt</label>
-        <input asp-for="@Model.moodEntry.MoodName" placeholder="Enter your feeling in one word" required />
+        <div class="form-floating mb-3">
+            <input asp-for="@Model.moodEntry.MoodColour" placeholder="Enter the colour that best describes your mood" required class="form-control" />
+            <label asp-for="@Model.moodEntry.MoodColour">Colour to best describe your mood</label>
+            <span asp-validation-for="@Model.moodEntry.MoodColour" class="text-danger"></span>
+        </div>
 
-        <label asp-for="@Model.moodEntry.MoodDescription"></label>
-        <input asp-for="@Model.moodEntry.MoodDescription" placeholder="Describe what led to this mood?" required />
 
-        <label asp-for="@Model.moodEntry.MoodColour">What colour best decipts your mood</label>
-        <input asp-for="@Model.moodEntry.MoodColour" placeholder="Enter the colour that best describes your mood" />
-
-        <label asp-for="@Model.moodEntry.Notes">What colour best decipts your mood</label>
-        <input asp-for="@Model.moodEntry.Notes" placeholder="Enter any additional information" />
-
-     
-
+        <div class="form-floating mb-3">
+            <textarea asp-for="@Model.moodEntry.Notes" placeholder="Enter any addtional notes here..." class="entrytextarea"></textarea>
+            <span asp-validation-for="@Model.moodEntry.Notes" class="text-danger"></span>
+        </div>
 
 
         <button type="submit">Submit Mood Entry</button>

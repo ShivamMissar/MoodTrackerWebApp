@@ -26,10 +26,15 @@ h1,h2,h3,h4,h5,h6 {
     color:white;
 }
 
-.mynav {
+.mynav  {
     background-color: #027dc5;
     color:white;
     margin-bottom: 40px;
+}
+
+.mynav li a
+{
+    color:white;
 }
 
 .mynav .logo 

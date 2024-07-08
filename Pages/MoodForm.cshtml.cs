@@ -12,6 +12,8 @@ namespace MoodTracker.Pages
 
         private readonly UserManager<AppUser> _userManager;
         private readonly DBcontext _dbcontext;
+
+
         [BindProperty]
         public MoodEntry moodEntry { get; set; }
 
@@ -34,12 +36,18 @@ namespace MoodTracker.Pages
             userId = _userManager.GetUserId(User);
         }
 
-        public IActionResult OnPost(String userid)
-        {
-            moodEntry.UserId = _userManager.GetUserId(User);
-            moodEntry.EntryDate = DateTime.Now;
-            _dbcontext.Add(moodEntry);
-            _dbcontext.SaveChanges();
+        public IActionResult OnPost()
+        { 
+
+            string finduser = _userManager.GetUserId(User);
+            if (!string.IsNullOrEmpty(finduser)) 
+            {
+
+                moodEntry.UserId = finduser;
+                moodEntry.EntryDate = DateTime.Now;
+                _dbcontext.Add(moodEntry);
+                _dbcontext.SaveChanges();
+            }
             return RedirectToPage("/Index");
         }
 

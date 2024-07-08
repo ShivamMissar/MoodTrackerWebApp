@@ -16,21 +16,29 @@
 .moodform
 {
     background-color:#d7e0eb;
+    margin-bottom:100px;
 
 }
-
-.moodentryform
+.moodform h2
 {
-    padding:30px;
+    text-align:center;
+    padding:20px;
+}
+
+.moodentryform {
+    padding: 30px;
+    position:relative;
+    left:300px;
 }
 .moodentryform input,label,button {
     display: block;
     padding:5px;
-    width:300px;
+    width:600px;
 }
 .moodentryform button
 {
     margin-top:30px;
+    padding:10px;
     border:none;
     background-color:#0855b1;
     color:white;
@@ -79,4 +87,12 @@
 {
     margin-top: 0;
     color:orange;
+}
+
+.entrytextarea {
+    border: none;
+    width: 600px;
+    height:200px;
+    padding:10px;
+    resize: none;
 }

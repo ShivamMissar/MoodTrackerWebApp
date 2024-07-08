@@ -25,7 +25,7 @@ namespace MoodTracker.Models
                 .HasForeignKey(e => e.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // For each mood entry it is associated to a single mood
+            
            
         }
     }

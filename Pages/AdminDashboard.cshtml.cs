@@ -1,4 +1,5 @@
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MoodTracker.Pages
 {
-    
+    [Authorize(Roles = "Admin")]
     public class AdminDashboardModel : PageModel
     {
         
@@ -65,6 +66,7 @@ namespace MoodTracker.Pages
             var user = await _userManger.FindByIdAsync(Id);
             if(user != null)
             {
+                user.UserName = NewEmail;
                 user.Email = NewEmail;
             }
             
