@@ -7,6 +7,10 @@ namespace MoodTracker.Models
         public String Firstname { get; set; }
         public String Lastname { get; set; }
 
+        public int LoginStreak { get; set; }
+
+        public DateTime  LastLoginDate { get; set; }
+
 
     }
 }

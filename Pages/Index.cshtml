@@ -5,28 +5,46 @@
 }
 
 <div class="text-center">
-  
     <a class="logemotionbutton" asp-page="/MoodForm">New Emotion? Click here to log</a>
-       <div class="timeline">
-        <h2>Your Mood Entries (Monday to Friday)</h2>
-        @foreach (var entry in Model.MoodEntries)
+    <div class="timeline">
+        <h2>Hello, @Model.UserName, here are your mood entries (Monday to Friday)</h2>
+
+        @if (Model.MoodEntries.Any())
         {
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>@entry.EntryDate.ToString("dddd, MMMM dd yyyy")</h3>
-                    <p><strong>Mood:</strong> @entry.MoodName</p>
-                    <p><strong>Description:</strong> @entry.MoodDescription</p>
-                    <p><strong>Notes:</strong> @entry.Notes</p>
-                    @if(entry.mood_insight != null && entry.recommendation != null)
-                    {
-                        <p><strong>Insight:</strong>@entry.mood_insight</p>
-                        <p><strong>Recommendations: </strong> @entry.recommendation</p>
-                    }
+            @foreach (var entry in Model.MoodEntries)
+            {
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>@entry.EntryDate.ToString("dddd, MMMM dd yyyy")</h3>
+
+                        <p><strong>Mood:</strong> @entry.MoodName</p>
+                        <p><strong>Description:</strong> @entry.MoodDescription</p>
+                        <p><strong>Colour:</strong> @entry.MoodColour</p>
+                        <p><strong>Notes:</strong> @entry.Notes</p>
+
+                        @if (!string.IsNullOrEmpty(entry.mood_insight) || !string.IsNullOrEmpty(entry.recommendation))
+                        {
+                            <p><strong>Insight:</strong> @entry.mood_insight</p>
+                            <p><strong>Recommendations:</strong> @entry.recommendation</p>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+        }
+        else
+        {
+            <p>No mood entries found for this week.</p>
         }
     </div>
 </div>
 
 
 
+<div class="LogOnStreak">
+
+    <h2>Have you logged your mood for today?</h2>
+    <h4>Great Job!</h4>
+    <h5>Include today you have logged your mood for <span>@Model.LoginStreak</span> continous day</h5>
+
+
+</div>

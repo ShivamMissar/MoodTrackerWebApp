@@ -116,6 +116,27 @@ namespace MoodTracker.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var now = DateTime.UtcNow;
+                    var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                    if (user != null) 
+                    {
+                        if(user.LastLoginDate.Date == now.Date.AddDays(-1)) 
+                        {
+                            user.LoginStreak++;
+                        }
+                        else if(user.LastLoginDate != now.Date)
+                        {
+                            user.LoginStreak = 1;
+                        }
+                        user.LastLoginDate = now;
+
+                        await _signInManager.UserManager.UpdateAsync(user);
+
+                    }
+
+
+
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

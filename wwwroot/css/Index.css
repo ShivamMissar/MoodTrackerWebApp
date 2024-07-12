@@ -4,6 +4,7 @@
     background-color:#d9dad9;
     padding:10px;
     font-size:20px;
+    
     color:white;
     border-radius:30px;
   
@@ -42,6 +43,7 @@
     border:none;
     background-color:#0855b1;
     color:white;
+    
     border-radius:10px;
 }
 
@@ -49,6 +51,7 @@
     position: relative;
     max-width: 600px;
     top: 50px;
+    left:390px;
     margin: 0 auto;
     padding: 10px 0;
     background-color: #027dc5;
@@ -95,4 +98,19 @@
     height:200px;
     padding:10px;
     resize: none;
+}
+
+.LogOnStreak {
+    position:relative;
+    left:-10px;
+    top:-450px;
+    width:50%;
+    padding:30px;
+    border-radius:10px;
+    background-color: #027dc5;
+
+}
+.LogOnStreak span
+{
+    color:orange;
 }

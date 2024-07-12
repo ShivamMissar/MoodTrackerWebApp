@@ -131,9 +131,9 @@ namespace MoodTracker.Areas.Identity.Pages.Account
                     await _roleManager.CreateAsync(role);
                 }
 
-                else if (!await _roleManager.RoleExistsAsync("User"))
+                else if (!await _roleManager.RoleExistsAsync("MSuser"))
                 {
-                    role.Name = "Visitor";
+                    role.Name = "MSuser";
                     await _roleManager.CreateAsync(role);
                 }
                 else

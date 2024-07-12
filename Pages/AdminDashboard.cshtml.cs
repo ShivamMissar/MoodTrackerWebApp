@@ -50,7 +50,7 @@ namespace MoodTracker.Pages
 
         public async Task<IActionResult> OnPostCreateNewRoleAsync()
         {
-            await _roleManager.CreateAsync(new IdentityRole(NewUserRole.Trim()));
+            await _roleManager.CreateAsync(new IdentityRole(new_role_name.Trim()));
             return RedirectToPage("/AdminDashboard");
         }
 
@@ -93,31 +93,47 @@ namespace MoodTracker.Pages
             {
                 TempData["PasswordUpdateMessage"] = "Password has been updated successfully.";
             }
-            return RedirectToPage("/Account");
+            return RedirectToPage("/AdminDashboard");
         }
 
 
         public async Task<IActionResult> OnPostUpdateRoleAsync(string Id)
         {
-            var finduser = await _userManger.FindByIdAsync(Id);
-            if(finduser != null) 
+            if (string.IsNullOrEmpty(NewUserRole))
             {
-                if(!await _roleManager.RoleExistsAsync(NewUserRole))
-                {
-                    TempData["RoleNotExist"] = "The role you are trying enter does not exist";
-                }
-                else
-                {
-                    var result = await _userManger.AddToRoleAsync(finduser, NewUserRole);
-                    if(result.Succeeded)
-                    {
-                        TempData["RoleUpdateMessage"] = "User role updated successfully.";
-                    }
-                }
-
+                TempData["RoleUpdateMessage"] = "Role cannot be empty.";
+                return RedirectToPage("/Admindashboard");
             }
+
+            var finduser = await _userManger.FindByIdAsync(Id);
+            if (finduser == null)
+            {
+                TempData["RoleUpdateMessage"] = "User not found.";
+                return RedirectToPage("/Admindashboard");
+            }
+
+            if (!await _roleManager.RoleExistsAsync(NewUserRole))
+            {
+                TempData["RoleNotExist"] = "The role you are trying to enter does not exist.";
+                return RedirectToPage("/Admindashboard");
+            }
+
+            var result = await _userManger.AddToRoleAsync(finduser, NewUserRole);
+            if (result.Succeeded)
+            {
+                TempData["RoleUpdateMessage"] = "User role updated successfully.";
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    TempData["RoleUpdateError"] += $"{error.Description} ";
+                }
+            }
+
             return RedirectToPage("/Admindashboard");
         }
+
 
 
     }
