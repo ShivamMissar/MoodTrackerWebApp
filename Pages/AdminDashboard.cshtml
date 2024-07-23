@@ -32,7 +32,7 @@
                <tr>
                     <td>@role.Id</td>
                     <td>@role.Name</td>
-                    <td><a class="Delete-Option" asp-page-handler="DeleteRole" asp-route-id="@role.Id">Delete User</a></td>
+                    <td><a class="Delete-Option" asp-page-handler="DeleteRole" asp-route-id="@role.Id">Delete Role</a></td>
                </tr>
                
                 
@@ -110,7 +110,7 @@
                                 </td>
                                 <td>
                                     <form method="post" asp-page-handler="DeleteUser">
-                                        <button class="delete_user" type="submit" asp-route-id="@user.Id">Submit</button>
+                                        <button class="delete_user" type="submit" asp-route-id="@user.Id">Delete User</button>
 
                                     </form>
                                 </td>

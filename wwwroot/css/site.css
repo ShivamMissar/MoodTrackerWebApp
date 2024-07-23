@@ -55,3 +55,12 @@ h1,h2,h3,h4,h5,h6 {
     border:none;
     font-size:14px;
 }
+
+.privacy_policy {
+    max-width: 800px;
+    margin: auto;
+    background: #a0c3e2;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom:100px;
+}

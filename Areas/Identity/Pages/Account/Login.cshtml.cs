@@ -116,27 +116,32 @@ namespace MoodTracker.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    var now = DateTime.UtcNow;
+                   
+                    
                     var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
-                    if (user != null) 
+                    if (user != null)
                     {
-                        if(user.LastLoginDate.Date == now.Date.AddDays(-1)) 
+                        var now = DateTime.UtcNow.Date; // Use UTC date for consistency
+
+                        // Check if last login was yesterday or earlier
+                        if (user.LastLoginDate.Date < now.AddDays(-1))
                         {
-                            user.LoginStreak++;
-                        }
-                        else if(user.LastLoginDate != now.Date)
-                        {
+                            // Reset streak to 1 if last login was not yesterday
                             user.LoginStreak = 1;
                         }
+                        else if (user.LastLoginDate.Date == now.AddDays(-1))
+                        {
+                            // Increment streak if last login was yesterday
+                            user.LoginStreak++;
+                        }
+
+                        // Update last login date to current UTC date
                         user.LastLoginDate = now;
 
+                        // Save updated user information
                         await _signInManager.UserManager.UpdateAsync(user);
-
                     }
-
-
-
-
+                    
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

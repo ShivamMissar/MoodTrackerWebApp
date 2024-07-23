@@ -22,9 +22,13 @@
                         <p><strong>Colour:</strong> @entry.MoodColour</p>
                         <p><strong>Notes:</strong> @entry.Notes</p>
 
-                        @if (!string.IsNullOrEmpty(entry.mood_insight) || !string.IsNullOrEmpty(entry.recommendation))
+                        @if (!string.IsNullOrEmpty(entry.mood_insight))
                         {
                             <p><strong>Insight:</strong> @entry.mood_insight</p>
+                        }
+
+                        @if (!string.IsNullOrEmpty(entry.recommendation))
+                        {
                             <p><strong>Recommendations:</strong> @entry.recommendation</p>
                         }
                     </div>
@@ -38,13 +42,19 @@
     </div>
 </div>
 
-
-
 <div class="LogOnStreak">
-
     <h2>Have you logged your mood for today?</h2>
-    <h4>Great Job!</h4>
-    <h5>Include today you have logged your mood for <span>@Model.LoginStreak</span> continous day</h5>
+   
+    @if(Model.LoginStreak == 0)
+    {
+        <h5>Great to see you're starting to log your moods keep going to increase your streak!</h5>
+    }
+    else
+    {
+        <h4>Great Job!</h4>
+        <h5>Including today, you have logged your mood for <span>@Model.LoginStreak</span> continuous days</h5>
+    }
+    
 
 
 </div>
