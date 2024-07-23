@@ -1,0 +1,53 @@
+﻿
+
+
+.emergency_help {
+    width: 100%;
+    background-color: #101e5a;
+    color:white;
+    padding:100px;
+    text-align:center;
+}
+.emergency_help h5
+{
+    font-size:30px;
+}
+
+.local_resources {
+    margin-top:50px;
+    background-color: #5d80b6;
+    padding:50px;
+}
+.urgent_help
+{
+    position:relative;
+    left:-11%;
+    text-align:center;
+    font-size:10px;
+}
+#phone_icon {
+    font-size: 85px;
+    padding: 5px;
+}
+.support_group {
+    position: relative;
+    left: 9%;
+    top:-120px;
+    text-align: center;
+    font-size: 10px;
+}
+.support_group a
+{
+    color:#f7f8f9
+}
+.support_group a:hover
+{
+    color:blue;
+}
+#support_group {
+    font-size: 85px;
+    padding: 5px;
+}
+
+.other_resources {
+}

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/css/Register.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/MoodLogs.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Account.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Resources.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Index.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MoodTracker.styles.css" asp-append-version="true" />
 
@@ -37,6 +38,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " asp-area="" asp-page="/MoodLog">Mood Logs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="" asp-page="/Resources">Mood Logs</a>
                             </li>
 
                             @if(User.IsInRole("Admin"))
