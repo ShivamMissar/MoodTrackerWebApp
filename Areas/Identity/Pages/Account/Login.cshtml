@@ -3,10 +3,29 @@
 
 @{
     ViewData["Title"] = "Log in";
+
+    var quotes = new List<string>
+    {
+        "The only way to do great work is to love what you do. – Steve Jobs",
+        "The journey of a thousand miles begins with one step. – Lao Tzu",
+        "Believe you can and you're halfway there. – Theodore Roosevelt",
+        "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
+        "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+        "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
+        "You are never too old to set another goal or to dream a new dream. – C.S. Lewis",
+        "Act as if what you do makes a difference. It does. – William James",
+        "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman"
+    };
+
+    var random = new Random();
+    var randomQuote = quotes[random.Next(quotes.Count)];
+
+
+
 }
 
 <h1 class="title"><span class="word-colour">MOOD</span>SERVE</h1>
-<h3 id="quotes"></h3>
+<h3 id="quotes" class="loginH3">@randomQuote</h3>
 <div class="row mdlogindiv">
     <div class="col-md-4">
         <section>
