@@ -53,8 +53,8 @@
 }
 .logs h3
 {
-    padding:10px;
-    color:white;
+    padding:30px;
+    color:darkblue;
     text-align:center;
 }
 .logs h4
@@ -68,7 +68,7 @@
 .logs p
 {
     font-family: sans-serif;
-    padding:5px;
+    padding:12px;
     color:cornflowerblue;
 
 }

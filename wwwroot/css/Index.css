@@ -4,15 +4,17 @@
     background-color:#d9dad9;
     padding:10px;
     font-size:20px;
-    
     color:white;
-    border-radius:30px;
-  
+    border-radius:10px;
+    width:100%;
+
+
 }
 
 .logemotionbutton:hover
 {
-     
+     background-color:darkblue;
+     color:white;
 }
 .moodform
 {

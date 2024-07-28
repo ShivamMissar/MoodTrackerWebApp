@@ -55,8 +55,8 @@ namespace MoodTracker.Pages
 
                 // Retrieve mood entries for the current week
                     MoodEntries = await _dbcontext.moodEntries
-        .Where(entry => entry.UserId == userId)
-.ToListAsync();
+                        .Where(entry => entry.UserId == userId)
+                        .ToListAsync();
 
                 // Update insights and recommendations if they are null or empty
                 foreach (var entry in MoodEntries)

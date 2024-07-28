@@ -4,6 +4,7 @@
 {
      background-color:#027dc5;
      padding:40px;
+     margin-bottom:100px;
 }
 
 
@@ -21,4 +22,20 @@
 }
 
 .UpdatePasswordForm {
+}
+
+.UpdateDetails button
+{
+    border:none;
+    width:550px;
+    padding:8px;
+    font-size:14px;
+    border-radius:10px;
+    position:relative;
+    left:320px;
+}
+.UpdateDetails button:hover
+{
+    background-color:darkblue;
+    color:white;
 }
