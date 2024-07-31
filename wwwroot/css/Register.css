@@ -1,8 +1,19 @@
 ﻿.mdformregister {
     padding: 30px;
-    background-color: white;
+    background-color: #027dc5;
     width: 200%;
     border-radius: 10px;
+    margin-bottom:100px;
+}
+
+.mdformregister button
+{
+      font-weight:300;
+    font-size:24px;
+    border:none;
+    border-radius:100px;
+    transition: transform 0.3s ease;
+    background-color: #d9dad9;
 }
 .mdregitserdiv
 {
