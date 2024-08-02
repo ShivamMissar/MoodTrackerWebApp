@@ -31,7 +31,7 @@
     }
     <div class="AddNewRole">
         <form method="post" asp-page-handler="CreateNewRole">
-            <input asp-for="@Model.new_role_name" placeholder="Enter a new role here"/>
+            <input asp-for="@Model.new_role_name" placeholder="Enter a new role here" pattern="[A-Za-z\s]+" />
             <button type="submit">Add New Role</button>
         </form>
 
@@ -132,7 +132,7 @@
                                 </td>
                                 <td>
                                     <form method="post" asp-page-handler="UpdateRole"  asp-route-id="@user.Id" asp-page="/AdminDashboard">
-                                        <input asp-for="NewUserRole" placeholder="Enter their new role" />
+                                        <input asp-for="NewUserRole" placeholder="Enter their new role" pattern="[A-Za-z\s]+" />
                                         <button class="" type="submit">Submit</button>
                                     </form>
                                 </td>
