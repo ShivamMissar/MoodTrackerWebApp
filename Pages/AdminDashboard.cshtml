@@ -8,6 +8,27 @@
 
 <div class="AvaliableRoles">
     <h2>Role Management</h2>
+
+
+    @if (TempData["RoleDeletedMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["RoleDeletedMessage"]
+        </div>
+    }
+    @if (TempData["RoleCreated"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["RoleCreated"]
+        </div>
+    }
+
+    @if (TempData["RoleUpdateMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["RoleUpdateMessage"]
+        </div>
+    }
     <div class="AddNewRole">
         <form method="post" asp-page-handler="CreateNewRole">
             <input asp-for="@Model.new_role_name" placeholder="Enter a new role here"/>
@@ -72,6 +93,13 @@
             @TempData["RoleNotExist"]
         </div>
     }
+
+    @if (TempData["UserDeletedMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["UserDeletedMessage"]
+        </div>
+    }
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -103,16 +131,14 @@
                                      </form>
                                 </td>
                                 <td>
-                                    <form method="post" asp-page-handler="UpdateRole"  asp-route-id="@user.Id" asp-page="/Admindashboard">
+                                    <form method="post" asp-page-handler="UpdateRole"  asp-route-id="@user.Id" asp-page="/AdminDashboard">
                                         <input asp-for="NewUserRole" placeholder="Enter their new role" />
                                         <button class="" type="submit">Submit</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form method="post" asp-page-handler="DeleteUser">
-                                        <button class="delete_user" type="submit" asp-route-id="@user.Id">Delete User</button>
-
-                                    </form>
+                                   
+                                    <a class="delete_user" asp-page-handler="Delete" asp-route-id="@user.Id" asp-page="/AdminDashboard">Delete User</a>
                                 </td>
                             </tr>
                 }

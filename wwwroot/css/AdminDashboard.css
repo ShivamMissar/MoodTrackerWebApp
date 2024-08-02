@@ -32,10 +32,14 @@
     width:11%;
     background-color:#a0c3e2;
     color:white;
-    left:88.5%;
+    left:88.8%;
     border:none;
     display:inline;
     
+}
+.AddNewRole button:hover
+{
+    background-color:darkblue;
 }
 
 .AvaliableRoles a {
@@ -44,7 +48,9 @@
     background-color:red;
     padding:10px;
 }
-
+.AvaliableRoles a:hover {
+    background-color:darkred;
+}
 
 .AvaliableRoles th
 {
@@ -64,6 +70,7 @@
     padding: 10px;
     background-color: #027dc5;
     width: 100%;
+    margin-bottom:100px;
 }
 
 .AllUsers 
@@ -81,7 +88,7 @@
 }
 .AllUsers button:hover
 {
-    background-color:#a0c3e2;
+    background-color:darkblue;
      color:white;
 }
 
@@ -107,5 +114,11 @@
     width:180px;
     padding:10px;
     background-color:red;
+    text-decoration:none;
+    color:white;
+}
+.AllUsers .delete_user:hover
+{
+    background-color:darkred;
 }
 

@@ -12,27 +12,27 @@
         <input type="hidden" value="@Model.userId" readonly/>
 
         <div class="form-floating mb-3">
-            <input asp-for="@Model.moodEntry.MoodName" placeholder="Enter your feeling in one word" required class="form-control" />
+            <input asp-for="@Model.moodEntry.MoodName" placeholder="Enter your feeling in one word" pattern="[A-Za-z\s]+" required class="form-control" />
             <label asp-for="@Model.moodEntry.MoodName">Mood Name</label>
             <span asp-validation-for="@Model.moodEntry.MoodName" class="text-danger"></span>
         </div>
 
         <div class="form-floating mb-3">
-            <input asp-for="@Model.moodEntry.MoodDescription" placeholder="Describe what led to this mood?" required class="form-control" />
+            <input asp-for="@Model.moodEntry.MoodDescription" placeholder="Describe what led to this mood?" pattern="[A-Za-z\s]+" required class="form-control" />
             <label asp-for="@Model.moodEntry.MoodDescription">Short Description</label>
             <span asp-validation-for="@Model.moodEntry.MoodDescription" class="text-danger"></span>
         </div>
 
 
         <div class="form-floating mb-3">
-            <input asp-for="@Model.moodEntry.MoodColour" placeholder="Enter the colour that best describes your mood" required class="form-control" />
+            <input asp-for="@Model.moodEntry.MoodColour" placeholder="Enter the colour that best describes your mood" pattern="[A-Za-z\s]+" required class="form-control" />
             <label asp-for="@Model.moodEntry.MoodColour">Colour to best describe your mood</label>
             <span asp-validation-for="@Model.moodEntry.MoodColour" class="text-danger"></span>
         </div>
 
 
         <div class="form-floating mb-3">
-            <textarea asp-for="@Model.moodEntry.Notes" placeholder="Enter any addtional notes here..." class="entrytextarea"></textarea>
+            <textarea asp-for="@Model.moodEntry.Notes" placeholder="Enter any addtional notes here..." class="entrytextarea" pattern="[A-Za-z\s]+"></textarea>
             <span asp-validation-for="@Model.moodEntry.Notes" class="text-danger"></span>
         </div>
 

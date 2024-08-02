@@ -50,17 +50,40 @@ namespace MoodTracker.Pages
 
         public async Task<IActionResult> OnPostCreateNewRoleAsync()
         {
-            await _roleManager.CreateAsync(new IdentityRole(new_role_name.Trim()));
+            var create_role = await _roleManager.CreateAsync(new IdentityRole(new_role_name.Trim()));
+            if(create_role.Succeeded)
+            {
+                TempData["RoleCreated"] = "Role has been created successfully.";
+            }
             return RedirectToPage("/AdminDashboard");
         }
 
         public async Task<IActionResult> OnGetDeleteRoleAsync(string Id)
         {
             var role = await _roleManager.FindByIdAsync(Id);
-            await _roleManager.DeleteAsync(role);
+            var result =  await _roleManager.DeleteAsync(role);
+            if (result.Succeeded)
+            {
+                TempData["RoleDeletedMessage"] = "Role has been removed successfully.";
+            }
+             
+
+                
+
             return RedirectToPage("/AdminDashboard");  
         }
 
+        public async Task<IActionResult> OnGetDeleteAsync(string Id)
+        {
+            var user = await _userManger.FindByIdAsync(Id);
+            var result = await _userManger.DeleteAsync(user);
+
+            if (result.Succeeded) 
+            {
+                TempData["UserDeletedMessage"] = "User has been removed successfully.";
+            }
+            return RedirectToPage("/AdminDashboard");
+        }
         public async Task<IActionResult> OnPostUpdateEmailAsync(string Id)
         {
             var user = await _userManger.FindByIdAsync(Id);
@@ -115,6 +138,11 @@ namespace MoodTracker.Pages
             if (!await _roleManager.RoleExistsAsync(NewUserRole))
             {
                 TempData["RoleNotExist"] = "The role you are trying to enter does not exist.";
+                return RedirectToPage("/Admindashboard");
+            }
+            if (await _roleManager.RoleExistsAsync(NewUserRole))
+            {
+                TempData["RoleExistAlready"] = "The role you are trying to enter already exists.";
                 return RedirectToPage("/Admindashboard");
             }
 

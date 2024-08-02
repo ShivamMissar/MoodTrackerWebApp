@@ -54,9 +54,22 @@ namespace MoodTracker.Pages
                 var userId = await _userManager.GetUserIdAsync(user);
 
                 // Retrieve mood entries for the current week
-                    MoodEntries = await _dbcontext.moodEntries
-                        .Where(entry => entry.UserId == userId)
-                        .ToListAsync();
+                /*MoodEntries = await _dbcontext.moodEntries
+                    .Where(entry => entry.UserId == userId)
+                    .ToListAsync();
+                */
+
+
+                var allEntries = await _dbcontext.moodEntries
+                .Where(entry => entry.UserId == userId)
+                .ToListAsync();
+
+                            MoodEntries = allEntries
+                .Where(entry => entry.EntryDate.DayOfWeek >= DayOfWeek.Monday &&
+                                entry.EntryDate.DayOfWeek <= DayOfWeek.Friday)
+                .ToList();
+
+
 
                 // Update insights and recommendations if they are null or empty
                 foreach (var entry in MoodEntries)
